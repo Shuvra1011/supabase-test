@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$ng-material-tailwind-theming-primary: mat.define-palette(mat.$indigo-palette);
+$ng-material-tailwind-theming-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$ng-material-tailwind-theming-warn: mat.define-palette(mat.$red-palette);
+
+$ng-material-tailwind-theming-theme: mat.define-light-theme((
+    color: (
+        primary:$ng-material-tailwind-theming-primary,
+        accent: $ng-material-tailwind-theming-accent,
+        warn: $ng-material-tailwind-theming-warn,
+    )
+));
+
+// @include mat.core-theme($ng-material-tailwind-theming-theme);
+// @include mat.button-theme($ng-material-tailwind-theming-theme);
+@include mat.all-component-themes($ng-material-tailwind-theming-theme);
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
